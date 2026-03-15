@@ -1,3 +1,0 @@
-/home/albusgive2/mujoco_learning/extend/soft_contact/C++/b/CMakeFiles/soft_contact.dir
-/home/albusgive2/mujoco_learning/extend/soft_contact/C++/b/CMakeFiles/edit_cache.dir
-/home/albusgive2/mujoco_learning/extend/soft_contact/C++/b/CMakeFiles/rebuild_cache.dir

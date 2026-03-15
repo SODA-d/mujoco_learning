@@ -1,0 +1,74 @@
+<mujoco>
+
+    <option timestep="0.002" gravity="0 0 0" />
+    <asset>
+        <texture name="plane" type="2d" builtin="checker" rgb1=".1 .1 .1" rgb2=".9 .9 .9"
+            width="512" height="512" mark="cross" markrgb=".8 .8 .8" />
+        <material name="plane" reflectance="0.3" texture="plane" texrepeat="1 1" texuniform="true" />
+    </asset>
+
+    <default>
+        <equality solref="-1000 -100" solimp="0.99 0.999 0.0001" />
+    </default>
+
+    <worldbody>
+        <geom name="floor" pos="0 0 0" size="0 0 .25" type="plane" material="plane"
+            condim="3" />
+        <light directional="true" ambient=".3 .3 .3" pos="30 30 30" dir="0 -.5 -1"
+            diffuse=".5 .5 .5" specular=".5 .5 .5" />
+
+        <replicate count="3" offset="0 0 0.1">
+            <replicate count="3" offset="0 0.1 0">
+                <replicate count="3" offset="0.1 0 0">
+                    <body name="box" pos="0 0 1.5">
+                        <freejoint />
+                        <geom type="box" size="0.05 0.05 0.05" mass="0.1" rgba="0.3 0.6 0.2 1" />
+                    </body>
+                </replicate>
+            </replicate>
+        </replicate>
+
+        <body name="wall_body" pos="6 0 0">
+            <site name="wall_site" pos="0 0 0" />
+            <body>
+                <geom name="wall" type="box" size="0.1 2 3" rgba="0 0 1 0.8" />
+            </body>
+        </body>
+
+    </worldbody>
+
+    <equality>
+        <weld body1="box000" body2="box001" torquescale="100"/>
+        <weld body1="box000" body2="box002" torquescale="100"/>
+        <weld body1="box000" body2="box010" torquescale="100"/>
+        <weld body1="box000" body2="box011" torquescale="100"/>
+        <weld body1="box000" body2="box012" torquescale="100"/>
+        <weld body1="box000" body2="box020" torquescale="100"/>
+        <weld body1="box000" body2="box021" torquescale="100"/>
+        <weld body1="box000" body2="box022" torquescale="100"/>
+
+        <weld body1="box000" body2="box100" torquescale="100"/>
+        <weld body1="box000" body2="box101" torquescale="100"/>
+        <weld body1="box000" body2="box102" torquescale="100"/>
+        <weld body1="box000" body2="box110" torquescale="100"/>
+        <weld body1="box000" body2="box111" torquescale="100"/>
+        <weld body1="box000" body2="box112" torquescale="100"/>
+        <weld body1="box000" body2="box120" torquescale="100"/>
+        <weld body1="box000" body2="box121" torquescale="100"/>
+        <weld body1="box000" body2="box122" torquescale="100"/>
+
+        <weld body1="box000" body2="box200" torquescale="100"/>
+        <weld body1="box000" body2="box201" torquescale="100"/>
+        <weld body1="box000" body2="box202" torquescale="100"/>
+        <weld body1="box000" body2="box210" torquescale="100"/>
+        <weld body1="box000" body2="box211" torquescale="100"/>
+        <weld body1="box000" body2="box212" torquescale="100"/>
+        <weld body1="box000" body2="box220" torquescale="100"/>
+        <weld body1="box000" body2="box221" torquescale="100"/>
+        <weld body1="box000" body2="box222" torquescale="100"/>
+    </equality>
+
+    <sensor>
+        <force name="wall_force" site="wall_site" />
+    </sensor>
+</mujoco>
